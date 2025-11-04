@@ -1,0 +1,58 @@
+const max = 100;
+const min = 0;
+var tentativas = 0;
+var tentativasrestantes = 5;
+let btnum = document.getElementById('envnum');
+let btreset = document.getElementById('res');
+btreset.addEventListener('click', reset);
+btnum.addEventListener('click', envnumber);
+var num = randomnumber(0, 100);
+var inp = document.getElementById('textnum');
+var text = document.getElementsByTagName('h2')[0];
+
+inp.addEventListener('keydown', function(event) {
+    // Verifica se a tecla pressionada é Enter
+    if (event.key === 'Enter') {
+        envnumber();
+        event.preventDefault();
+    }
+});
+
+function randomnumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function envnumber() {
+    let inputValue = Number(inp.value);  // Converta para número
+
+    if (inp.value.trim() != '') {
+        if (inputValue === num) {
+            tentativas++;
+            text.innerText = `Acertou! O número era ${num}! Tentativas: ${tentativas}`;
+            inp.value = '';
+        } else {
+            if (tentativas < 4 && inp.value <= 100) {
+                tentativas++;
+                tentativasrestantes--;
+                let dica = inputValue < num ? 'maior' : 'menor';
+                text.innerText = `Errou! O número sorteado é ${dica}. Tentativas restantes: ${tentativasrestantes}`;
+                inp.value = '';
+            } else {
+                if(inp.value > 100)
+                {
+                    alert('O número deve ser menor que 100!')
+                    inp.value = ''
+                }else{
+                    text.innerText = `Acabaram as tentativas! O número era ${num}`;}
+            }
+        }
+    } else {
+        alert('Por favor insira um número!');
+    }
+}
+
+function reset() {
+    location.reload(true);
+}
