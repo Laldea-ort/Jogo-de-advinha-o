@@ -1,0 +1,106 @@
+body{
+    background-image: url('https://assets-blog.hostgator.com.br/wp-content/uploads/2024/09/AnyConv.com__310509635_f67e67ed-6a6f-4352-96d1-24419861f393-scaled.webp');
+    height: 100vh;
+    color: white
+}
+#div{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.div{
+    height: 500px;
+    width: 500px;
+    border: solid 5px white;
+    border-radius: 15px;
+    text-align: center;
+    align-content: center;
+    font-size: 15px;
+    background-color: black;
+
+}
+input{
+
+
+    height: 30px;
+    width:300px;
+    border: solid 2px white;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+
+}
+.button{
+
+    width: 300px;
+    height: 60px;
+    background-color: black;
+    border: solid 4px white;
+    color: white;
+    border-radius: 6px;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+#envnum{
+
+    margin-bottom: 50px;
+
+}
+.button:hover{
+
+    box-shadow: 5px 4px 12px white;
+
+}
+.button:active{
+
+    background-color: white;
+    color: black;
+
+}
+.btdificuldade{
+
+    width: 160px;
+    height: 55px;
+    border: solid 3px white;
+    border-radius: 18px;
+    color: white;
+    margin-bottom: 55px;
+
+}
+label{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+}
+#btdiffacil{
+    margin-left: 50px;
+    background-color: rgb(6, 139, 6);
+    transition: box-shadow ease 0.3s;
+    font-size: 30px;
+
+}
+#btdiffacil:hover{
+   box-shadow: 4px 4px 12px 3px rgb(15, 197, 15);
+
+}
+#btdiffacil:active{
+    background-color: rgb(58, 173, 58);
+}
+nav{
+
+    margin-bottom: 60px;
+    background-color: black;
+    height: 260px;
+    font-family: "Stack Sans Notch", sans-serif;
+    align-content: center;
+
+}
+#gametitle{
+    text-align: center;
+    font-size: 30px;
+
+}
