@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.pinimg.com/736x/fd/0a/78/fd0a7888a1165a085fabf22a1ac3fd41.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+
+    <title>Número aleatório</title>
+</head>
+<body>
+    <section id="div">
+        <div class="div">
+            <h1>Advinhe o número de 0 a 100, você tem 8 tentativas</h1>
+            <br>
+            <input type="number" name="texnum" id="textnum">
+            <br>
+            <h2></h2>
+            <br>
+            <button type="button" id="envnum" class="button">Enviar número</button>
+            <br>
+            <button type="button" id="res" class="button">Resetar</button>
+        </div>
+    </section>  
+    <div>
+        <p>Dificuldades:</p>
+    </div>
+    <footer>
+        <button type="button" class="btdificuldade" id="btdiffacil">Fácil</button>
+        <button type="button" class="btdificuldade" id="btdifmed">Média</button>
+        <button type="button" class="btdificuldade" id="btdif">Difícil</button>
+        <button type="button" class="btdificuldade" id="btdifex">Extremo</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+*{
+    margin: auto;
+}
+body{
+    background-image: url('https://assets-blog.hostgator.com.br/wp-content/uploads/2024/09/AnyConv.com__310509635_f67e67ed-6a6f-4352-96d1-24419861f393-scaled.webp');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white
+}
+#div{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.div{
+    height: 500px;
+    width: 500px;
+    border: solid 5px white;
+    border-radius: 15px;
+    text-align: center;
+    align-content: center;
+    font-size: 15px;
+    background-color: black;
+
+}
+input{
+
+
+    height: 30px;
+    width:300px;
+    border: solid 2px white;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-bottom: 20px;
+
+}
+.button{
+
+    width: 300px;
+    height: 60px;
+    background-color: black;
+    border: solid 4px white;
+    color: white;
+    border-radius: 6px;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+#envnum{
+
+    margin-bottom: 50px;
+
+}
+.button:hover{
+
+    box-shadow: 5px 4px 12px white;
+
+}
+.button:active{
+
+    background-color: white;
+    color: black;
+
+}
+.btdificuldade{
+
+    width: 160px;
+    height: 55px;
+    border: solid 3px white;
+    border-radius: 18px;
+    color: white;
+}
+label{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+
+}
+#btdiffacil{
+    margin-left: 50px;
+    background-color: rgb(6, 139, 6);
+    transition: box-shadow ease 0.3s;
+    font-size: 30px;
+
+}
+#btdiffacil:hover{
+   box-shadow: 4px 4px 12px 3px rgb(15, 197, 15, 0.678);
+
+}
+#btdiffacil:active{
+    background-color: rgb(58, 173, 58);
+}
+nav{
+
+    margin-bottom: 60px;
+    background-color: black;
+    height: 260px;
+    font-family: "Stack Sans Notch", sans-serif;
+    align-content: center;
+
+}
+#gametitle{
+    text-align: center;
+    font-size: 30px;
+
+}
+section{
+    flex-grow: 1;
+}
+footer{
+    background-color: black;
+    width: 100%;
+    height: 150px;
+    align-content: center;
+}
+p{
+    font-size:50px;
+}
+#btdifmed{
+    margin-left: 50px;
+    background-color: rgb(230, 207, 9);
+    transition: box-shadow ease 0.3s;
+    font-size: 30px;
+
+}
+#btdifmed:hover{
+   box-shadow: 4px 4px 12px 3px rgba(230, 208, 9, 0.678);
+}
+#btdifmed:active{
+    background-color: rgb(255, 239, 97);
+}
+#btdif{
+    margin-left: 50px;
+    background-color: rgb(255, 0, 0);
+    transition: box-shadow ease 0.3s;
+    font-size: 30px;
+
+}
+#btdif:hover{
+   box-shadow: 4px 4px 12px 3px rgba(255, 0, 0, 0.678);
+
+}
+#btdif:active{
+    background-color: rgb(255, 97, 97);
+}
+#btdifex{
+    margin-left: 50px;
+    background-color: rgb(119, 0, 255);
+    transition: box-shadow ease 0.3s;
+    font-size: 30px;
+
+}
+#btdifex:hover{
+   box-shadow: 4px 4px 12px 3px rgba(119,0,255,0.678);
+
+}
+#btdifex:active{
+    background-color: rgb(169, 94, 255);
+}
+h1{
+    margin-bottom: 30px;
+}
+const max = 100;
+const min = 0;
+var tentativas = 0;
+var tentativasrestantes = 8;
+let btnum = document.getElementById('envnum');
+let btreset = document.getElementById('res');
+btreset.addEventListener('click', reset);
+btnum.addEventListener('click', envnumber);
+var num = randomnumber(0, 100);
+var inp = document.getElementById('textnum');
+var text = document.getElementsByTagName('h2')[0];
+var dif = 'facil'
+
+inp.addEventListener('keydown', function(event) {
+    // Verifica se a tecla pressionada é Enter
+    if (event.key === 'Enter') {
+        envnumber();
+        event.preventDefault();
+    }
+});
+
+function randomnumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function envnumber() {
+    let inputValue = Number(inp.value);  // Converta para número
+
+    if (inp.value.trim() != '') {
+        if (inputValue === num) {
+            tentativas++;
+            text.innerText = `Acertou! O número era ${num}! Tentativas: ${tentativas}`;
+            inp.value = '';
+        } else {
+            if (tentativas < 7 && inp.value <= 100) {
+                tentativas++;
+                tentativasrestantes--;
+                let dica = inputValue < num ? 'maior' : 'menor';
+                text.innerText = `Errou! O número sorteado é ${dica}. Tentativas restantes: ${tentativasrestantes}`;
+                inp.value = '';
+            } else {
+                if(inp.value > 100)
+                {
+                    alert('O número deve ser menor que 100!')
+                    inp.value = ''
+                }else{
+                    text.innerText = `Acabaram as tentativas! O número era ${num}`;}
+                    btnum.disabled = 'disabled'
+            }
+        }
+    } else {
+        alert('Por favor insira um número!');
+    }
+}
+
+function reset() {
+    location.reload(true);
+}
+function changedif(){
+    switch(dif){
+        case 'facil':
+            localStorage.setItem('dificuldade', 'facil')
+            break
+        case 'medio':
+                localStorage.setItem('dificuldade', 'medio')
+                break
+        case 'dificil':
+            localStorage.setItem('dificuldade', 'dificil')
+            break
+        case 'extremo':
+                localStorage.setItem('dificuldade', 'extremo')
+                break
+    }
+}
+function facil(){
+    dif = 'facil'
+}
+changedif()
